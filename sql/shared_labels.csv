@@ -1,0 +1,3 @@
+share_id,label_id,share_token,recipient_email,shared_at,expires_at
+,NULL,abc123def456ghi789,"mottagare@example.com",2024-10-15 15:00:00,2024-11-15 15:00:00
+,NULL,xyz987uvw654rst321,"annanmottagare@example.com",2024-10-16 10:00:00,2024-11-16 10:00:00

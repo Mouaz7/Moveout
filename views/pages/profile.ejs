@@ -1,0 +1,61 @@
+<%- include("../partials/header") %>
+
+<div class="profile-container">
+    <h1>Your Profile</h1>
+    <p>Welcome, <%= user.profileName %>!</p>
+    <p>Email: <%= user.email %></p>
+    <p>User ID: <%= user.id %></p>
+
+    <!-- Felmeddelande om något går fel -->
+    <% if (errorMessage) { %>
+        <div class="error-message">
+            <p><%= errorMessage %></p>
+        </div>
+    <% } %>
+
+    <!-- Framgångsmeddelande om profilen uppdateras -->
+    <% if (successMessage) { %>
+        <div class="success-message">
+            <p><%= successMessage %></p>
+        </div>
+    <% } %>
+
+    <!-- Formulär för att uppdatera profilinformation -->
+    <form action="/move/profile/update" method="POST" class="profile-update-form">
+        <div class="form-group">
+            <label for="profileName">Update Name</label>
+            <input type="text" id="profileName" name="profileName" value="<%= user.profileName %>" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Update Email</label>
+            <input type="email" id="email" name="email" value="<%= user.email %>" required>
+        </div>
+
+        <div class="form-group">
+            <label for="currentPassword">Current Password</label>
+            <input type="password" id="currentPassword" name="currentPassword" placeholder="Enter Current Password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" name="newPassword" placeholder="Enter New Password">
+        </div>
+
+        <button type="submit" class="btn">Update Profile</button>
+    </form>
+
+    <!-- Logout-knapp -->
+    <div class="actions">
+        <a href="/move/logout" class="btn">Logout</a>
+    </div>
+
+    <!-- Avaktiveringsknapp -->
+    <div class="actions">
+        <form action="/move/profile/deactivate" method="POST" onsubmit="return confirm('Are you sure you want to deactivate your account?');">
+            <button type="submit" class="btn">Deactivate Account</button>
+        </form>
+    </div>
+</div>
+
+<%- include("../partials/footer") %>

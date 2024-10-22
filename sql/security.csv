@@ -1,0 +1,4 @@
+SecurityID,UserID,SecurityName,DateOfCreation,DateOfDestruction
+1,1,Password Reset,2023-09-01,NULL
+2,2,Email Verified,2023-09-02,NULL
+3,3,Password Change,2023-09-03,NULL

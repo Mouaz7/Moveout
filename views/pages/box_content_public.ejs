@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Box Details</title>
+    <link rel="stylesheet" href="/style/style.css"> <!-- Länk till den externa CSS-filen -->
+</head>
+<body>
+    <%- include("../partials/header") %>
+
+    <div class="qr-container">
+        <h1 class="qr-header">Box Details</h1>
+
+        <div class="qr-details-section">
+            <h3>Box Name:</h3>
+            <p><%= box.box_name %></p>
+        </div>
+
+        <div class="qr-details-section">
+            <h3>Label:</h3>
+            <p><%= box.label_name ? box.label_name : "No label provided" %></p>
+        </div>
+
+        <% if (box.label_image && box.label_image !== 'undefined') { %>
+            <div class="qr-details-section">
+                <h3>Label Image:</h3>
+                <img src="/style/images/<%= box.label_image %>" alt="Label Image">
+            </div>
+        <% } %>
+
+        <div class="qr-details-section">
+            <h3>Content Type:</h3>
+            <p><%= box.content_type.charAt(0).toUpperCase() + box.content_type.slice(1) %></p>
+        </div>
+
+        <div class="qr-details-section">
+            <h3>Content:</h3>
+            <% if (box.content_type === 'text') { %>
+                <p><%= box.content_data %></p>
+            <% } else if (box.content_type === 'image') { %>
+                <img src="/uploads/<%= box.content_data %>" alt="Box Image" class="qr-details-section-img">
+            <% } else if (box.content_type === 'audio') { %>
+                <audio controls class="qr-audio">
+                    <source src="/uploads/<%= box.content_data %>" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            <% } else { %>
+                <p>No content available to display.</p>
+            <% } %>
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>
+</body>
+</html>

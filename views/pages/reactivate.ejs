@@ -1,0 +1,28 @@
+<%- include("../partials/header") %>
+
+<div class="reactivation-container">
+    <h1>Reactivate Account</h1>
+
+    <% if (errorMessage) { %>
+        <div class="error-message">
+            <p><%= errorMessage %></p>
+        </div>
+    <% } %>
+
+    <% if (successMessage) { %>
+        <div class="success-message">
+            <p><%= successMessage %></p>
+        </div>
+    <% } %>
+
+    <form action="/move/profile/reactivate" method="POST">
+        <div class="form-group">
+            <label for="email">Enter your email to reactivate your account</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <button type="submit" class="btn">Reactivate Account</button>
+    </form>
+</div>
+
+<%- include("../partials/footer") %>

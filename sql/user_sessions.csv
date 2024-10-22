@@ -1,0 +1,4 @@
+SessionID,UserID,SessionToken,CreatedAt,ExpiresAt
+1,1,unique_session_token_1,2023-09-01 10:00:00,2023-09-01 12:00:00
+2,2,unique_session_token_2,2023-09-02 11:00:00,2023-09-02 13:00:00
+3,3,unique_session_token_3,2023-09-03 14:00:00,2023-09-03 16:00:00

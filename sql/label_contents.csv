@@ -1,0 +1,4 @@
+content_id,label_id,content_type,content_text,content_url,created_at,updated_at
+,NULL,1,text,"Detta är ett exempel på textinnehåll.",,2024-10-15 12:00:00,2024-10-15 12:00:00
+,NULL,2,image,,/uploads/images/example_image.png,2024-10-15 13:00:00,2024-10-15 13:00:00
+,NULL,3,audio,,/uploads/audio/example_audio.mp3,2024-10-15 14:00:00,2024-10-15 14:00:00

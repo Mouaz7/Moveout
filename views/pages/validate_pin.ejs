@@ -1,0 +1,35 @@
+<%- include("../partials/header") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter PIN - MoveOut</title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Enter PIN</h1>
+        <p>Please enter the 6-digit PIN to access the content for this box.</p>
+
+        <form action="/boxes/qr/<%= box.access_token %>/validate-pin" method="POST">
+            <div class="form-group">
+                <label for="pinCode">PIN Code:</label>
+                <input type="text" name="pinCode" id="pinCode" maxlength="6" pattern="\d{6}" placeholder="Enter 6-digit PIN" required>
+            </div>
+
+            <button type="submit">Submit</button>
+
+            <% if (errorMessage) { %>
+                <p class="error-message"><%= errorMessage %></p>
+            <% } %>
+        </form>
+
+        <div class="form-footer">
+            <a href="/move/boxes">Back to All Boxes</a>
+        </div>
+    </div>
+</body>
+</html>
+
+<%- include("../partials/footer") %>

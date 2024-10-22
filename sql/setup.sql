@@ -1,0 +1,4 @@
+DROP DATABASE IF EXISTS moveout;
+CREATE DATABASE moveout;
+
+USE moveout;

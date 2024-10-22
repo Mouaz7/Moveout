@@ -1,0 +1,723 @@
+/* Grundläggande layout för sidan, ställer in bakgrundsfärg och marginaler */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5; /* Ljusgrå bakgrundsfärg */
+  margin: 0;
+  padding: 0;
+}
+
+/* Kontejner för innehållet för att ge sidan en maxbredd och centrera innehållet */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Tabell design för enhetlig tabellstil över hela sidan */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white; /* Vit bakgrund för tabellen */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lätt skugga under tabellen */
+}
+
+table td, table th {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+table th {
+  background-color: #3498db; /* Blå bakgrundsfärg på rubriker */
+  color: white;
+  font-weight: normal;
+}
+
+/* Navigationsbar */
+nav {
+  background-color: #2c3e50;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  flex: 1;
+}
+
+nav ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #1a252f;
+}
+
+/* Formulärfält */
+input[type="text"], input[type="password"], input[type="number"], select {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus, select:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Submit-knappar */
+input[type="submit"], button.btn {
+  width: 100%;
+  background-color: #3498db;
+  color: white;
+  padding: 14px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover, button.btn:hover {
+  background-color: #2980b9;
+}
+
+/* Div-element */
+div {
+  border-radius: 5px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Action-länkar */
+.action-link {
+  text-decoration: none;
+  margin-right: 10px;
+  color: #3498db;
+  transition: color 0.3s;
+}
+
+.action-link:hover {
+  color: #2980b9;
+}
+
+.action-link i {
+  font-size: 20px;
+}
+
+/* Inloggningsdesign */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-box {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Rubriker */
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-weight: normal;
+}
+
+/* Marginal för formulärets inputfält */
+.input-container {
+  margin-bottom: 20px;
+}
+
+/* Label för formulärfälten */
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 14px;
+}
+
+/* Stil för text- och lösenordsfält */
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Checkbox-container */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Stil för länken "Forgot password" */
+.forgot-password {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.forgot-password a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.forgot-password a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* Anpassning för mobila enheter */
+@media screen and (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  .login-box {
+    padding: 30px;
+  }
+}
+
+
+/* Google login button styles */
+.google-login {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.google-btn:hover {
+  background-color: #f1f1f1;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 32px;
+}
+
+.box-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.box-item {
+  background-color: #ecf0f1;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.box-item strong {
+  color: #34495e;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.box-item .actions {
+  margin-top: 10px;
+}
+
+.box-item .actions a {
+  margin-right: 10px;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+  background-color: #3498db;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.box-item .actions a:hover {
+  background-color: #2980b9;
+}
+
+.box-item .actions form {
+  display: inline;
+}
+
+.box-item .actions button {
+  padding: 10px 15px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.box-item .actions button:hover {
+  background-color: #c0392b;
+}
+
+.box-item .actions button:focus {
+  outline: none;
+}
+
+
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 32px;
+}
+
+.box-details {
+  background-color: #ecf0f1;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.box-details strong {
+  color: #34495e;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+.actions {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.actions a {
+  margin-right: 10px;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+  background-color: #3498db;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.actions a:hover {
+  background-color: #2980b9;
+}
+
+.actions form {
+  display: inline;
+}
+
+.actions button {
+  padding: 10px 15px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.actions button:hover {
+  background-color: #c0392b;
+}
+
+.actions button:focus {
+  outline: none;
+}
+
+
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 16px;
+  color: #34495e;
+  margin-bottom: 8px;
+  display: block;
+  font-weight: 600;
+}
+
+input[type="text"], select, textarea, input[type="file"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #bdc3c7;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, select:focus, textarea:focus, input[type="file"]:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.label-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label-option {
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.label-option img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+}
+
+.label-option.selected {
+  border-color: #3498db;
+}
+
+.label-option:hover {
+  border-color: #2980b9;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: #3498db;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.form-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #7f8c8d;
+}
+
+.form-footer a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Hide content type inputs initially */
+#textInput, #fileInput {
+  display: none;
+}
+/* Stilar för QR-kodsidan - Grundlayout och container */
+.qr-container {
+  max-width: 900px; /* Sätter maxbredd för sidan så den inte blir för bred på större skärmar */
+  margin: 30px auto; /* Centrerar sidan horisontellt och ger lite utrymme ovanför och nedanför */
+  padding: 30px; /* Inre marginal för att ge luft runt innehållet */
+  background-color: #ffffff; /* Vit bakgrundsfärg för att göra det rent och lättläst */
+  border-radius: 12px; /* Rundar hörnen på behållaren */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Lägger till en skugga för en svävande effekt */
+}
+
+/* Huvudrubrik för sidan */
+.qr-header {
+  text-align: center; /* Centrerar texten */
+  color: #2c3e50; /* Mörkblå färg för texten */
+  margin-bottom: 20px; /* Ger lite avstånd till nästa element */
+  font-size: 32px; /* Större textstorlek för att dra uppmärksamhet */
+}
+
+/* Sektion för QR-detaljer */
+.qr-details-section {
+  margin-bottom: 25px; /* Avstånd under sektionen */
+}
+
+.qr-details-section h3 {
+  margin-bottom: 10px; /* Lite avstånd under rubriken */
+  color: #34495e; /* Mörkgrå färg för rubriker */
+  font-size: 24px; /* Storlek på rubriken för att skilja från andra texter */
+}
+
+.qr-details-section img {
+  max-width: 100%; /* Gör att bilden inte överskrider förälderns bredd */
+  border-radius: 8px; /* Rundar hörnen på bilden */
+  margin-top: 10px; /* Avstånd ovanför bilden */
+  height: auto;
+}
+
+/* Stilar för ljuduppspelare */
+.qr-audio {
+  width: 100%; /* Gör ljuduppspelaren fullbredd inom sin container */
+  margin-top: 10px; /* Avstånd ovanför */
+}
+
+/* Stil för innehåll under QR-detaljer */
+.qr-content {
+  margin-top: 20px; /* Avstånd ovanför */
+  text-align: center; /* Centrerar texten */
+}
+
+.qr-content strong {
+  display: block; /* Gör texten till ett blockelement */
+  color: #2c3e50; /* Samma färg som rubriker för konsekvens */
+  font-size: 18px; /* Något mindre än huvudrubrik men större än vanlig text */
+  margin-bottom: 10px; /* Lite avstånd under texten */
+}
+
+/* Stil för QR-koden */
+.qr-code {
+  display: block; /* Gör elementet block för att enkelt centrera */
+  margin: 20px auto; /* Centrerar QR-koden och ger avstånd ovanför och nedanför */
+  border: 1px solid #ddd; /* Lätt grå kant runt QR-koden */
+  padding: 10px; /* Inre marginal runt QR-koden */
+  background-color: #f9f9f9; /* Ljus bakgrund för att skilja från omgivningen */
+  border-radius: 8px; /* Rundar hörnen på QR-koden */
+  width: auto; /* Anpassar bredden automatiskt */
+}
+
+/* Stilar för knappar och länkar */
+.qr-actions {
+  text-align: center; /* Centrerar knappar och länkar */
+  margin-top: 30px; /* Avstånd ovanför */
+}
+
+.qr-actions a {
+  margin-right: 10px; /* Avstånd mellan länkar/knappar */
+  padding: 12px 20px; /* Ger knappens inre marginaler för mer klickyta */
+  text-decoration: none; /* Tar bort understrykning på länkar */
+  color: white; /* Vit text på knappen */
+  background-color: #3498db; /* Blå bakgrundsfärg för knappen */
+  border-radius: 6px; /* Rundar hörnen på knappen */
+  font-size: 16px; /* Standard textstorlek */
+  transition: background-color 0.3s ease; /* Smidig övergång vid hover */
+  display: inline-block; /* Gör att knappen respekterar padding och margin */
+}
+
+.qr-actions a:hover {
+  background-color: #2980b9; /* Mörkare blå färg när man håller musen över */
+}
+
+/* Anpassning för mobila enheter */
+@media screen and (max-width: 768px) {
+  .qr-container {
+      padding: 20px; /* Minskar padding för mindre skärmar */
+  }
+
+  .qr-header {
+      font-size: 28px; /* Minskar rubrikens storlek på mindre skärmar */
+  }
+
+  .qr-actions a {
+      padding: 10px 15px; /* Minskar knappstorleken för att passa mindre skärmar */
+      font-size: 14px; /* Minskar textstorleken på knapparna */
+  }
+}
+/* Förbättrar liststil för boxarna */
+.box-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.box-item {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header för boxnamn */
+.box-header {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Innehåll och detaljer i boxen */
+.box-content {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.label-image img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+/* Stil för label information */
+.label-info {
+  background-color: #ecf0f1;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Stil för åtgärdsknappar */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.actions .btn {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  background-color: #3498db;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+  display: inline-block;
+}
+
+.actions .btn:hover {
+  background-color: #2980b9;
+}
+
+.actions .btn-danger {
+  background-color: #e74c3c;
+}
+
+.actions .btn-danger:hover {
+  background-color: #c0392b;
+}

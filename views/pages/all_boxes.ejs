@@ -1,0 +1,44 @@
+<%- include("../partials/header") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Boxes</title>
+    <link rel="stylesheet" href="/style/style.css"> <!-- External CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1 class="qr-header">All Boxes</h1>
+        <ul class="box-list">
+            <% boxes.forEach(box => { %>
+                <li class="box-item">
+                    <div class="box-header">
+                        <h3>Box Name:</h3>
+                        <p><%= box.box_name %></p>
+                    </div>
+                    <div class="box-content">
+                        <% if (box.label_image && box.label_image !== 'undefined') { %>
+                            <div class="label-image">
+                                <img src="/style/images/<%= box.label_image %>" alt="Label Image" class="label-img">
+                            </div>
+                        <% } else { %>
+                            <div class="label-image">
+                                <p>No label image available</p>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div class="actions">
+                        <a href="/move/boxes/view/<%= box.box_id %>" class="btn btn-primary">View Box</a>
+                        <a href="/move/boxes/edit/<%= box.box_id %>" class="btn btn-secondary">Edit Box</a>
+                        <form action="/move/boxes/delete/<%= box.box_id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this box?')" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>

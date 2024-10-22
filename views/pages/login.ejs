@@ -1,0 +1,55 @@
+<%- include("../partials/header") %>
+
+<div class="login-container">
+  <div class="login-box">
+    <h2 class="login-title">Login to MoveOut</h2>
+
+    <!-- Felmeddelande -->
+    <% if (errorMessage) { %>
+      <div class="error-message">
+        <p><%= errorMessage %></p>
+      </div>
+    <% } %>
+
+    <form action="/move/login" method="POST">
+      <div class="input-container">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter Email" required>
+      </div>
+
+      <div class="input-container">
+        <label for="psw">Password</label>
+        <input type="password" id="psw" name="psw" placeholder="Enter Password" required>
+      </div>
+
+      <div class="checkbox-container">
+        <label>
+          <input type="checkbox" name="remember"> Remember me
+        </label>
+      </div>
+
+      <button type="submit" class="btn login-btn">Login</button>
+
+      <div class="forgot-password">
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <!-- Länk till registrering -->
+      <div class="register-link">
+        <p>Don't have an account? <a href="/move/register">Sign Up</a></p>
+      </div>
+    </form>
+
+
+    <!-- Google inloggningsknapp -->
+    <div class="google-login">
+      <a href="/auth/google" class="btn google-btn">
+        <img src="/style/google.ico" alt="Google Icon" class="google-icon">
+        Login with Google
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || 'Admin Panel - Manage Users' %></title>
+    <link rel="stylesheet" href="/style/style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <% if (showDashboard) { %>
+            <!-- Admin Dashboard -->
+            <h1>Admin Dashboard</h1>
+            <p>Welcome to the Admin Panel!</p>
+            <ul>
+                <li><a href="/move/admin/users">Manage Users</a></li>
+            </ul>
+
+            <!-- Formulär för att skicka marknadsföringsmejl -->
+            <h2>Send Marketing Emails</h2>
+
+            <!-- Felmeddelande -->
+            <% if (errorMessage) { %>
+                <div class="error-message">
+                    <p><%= errorMessage %></p>
+                </div>
+            <% } %>
+
+            <!-- Framgångsmeddelande -->
+            <% if (successMessage) { %>
+                <div class="success-message">
+                    <p><%= successMessage %></p>
+                </div>
+            <% } %>
+
+            <form action="/move/admin/send-marketing" method="POST">
+                <div class="input-container">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+
+                <div class="input-container">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" class="btn">Send Emails</button>
+            </form>
+
+            <!-- Formulär för att inaktivera inaktiva användare -->
+            <h2>Deactivate Inactive Users</h2>
+            <form action="/move/admin/deactivate-inactive" method="GET">
+                <button type="submit" class="btn">Deactivate Inactive Users</button>
+            </form>
+
+        <% } else { %>
+            <!-- Användarhanteringspanelen -->
+            <h1>Admin Panel: Manage Users</h1>
+
+            <!-- Felmeddelande -->
+            <% if (errorMessage) { %>
+                <div class="error-message">
+                    <p><%= errorMessage %></p>
+                </div>
+            <% } %>
+
+            <!-- Framgångsmeddelande -->
+            <% if (successMessage) { %>
+                <div class="success-message">
+                    <p><%= successMessage %></p>
+                </div>
+            <% } %>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Last Activity</th>
+                        <th>Created At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(user => { %>
+                        <tr>
+                            <td><%= user.user_id %></td>
+                            <td><%= user.email %></td>
+                            <td><%= user.is_active ? 'Active' : 'Inactive' %></td>
+
+                            <!-- Visa datum och tid med AM/PM-format -->
+                            <td><%= new Date(user.last_activity).toLocaleString('en-GB', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }) %></td>
+                            <td><%= new Date(user.created_at).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true }) %></td>
+
+                            <td>
+                                <!-- Formulär för att aktivera/inaktivera användare -->
+                                <form action="/move/admin/toggle-status" method="POST" style="display:inline;">
+                                    <input type="hidden" name="user_id" value="<%= user.user_id %>">
+                                    <button type="submit" class="btn">
+                                        <%= user.is_active ? 'Deactivate' : 'Activate' %>
+                                    </button>
+                                </form>
+
+                                <!-- Formulär för att ta bort användare -->
+                                <form action="/move/admin/delete" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                    <input type="hidden" name="user_id" value="<%= user.user_id %>">
+                                    <button type="submit" class="btn">Delete</button>
+                                </form>
+
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+    </div>
+</body>
+</html>

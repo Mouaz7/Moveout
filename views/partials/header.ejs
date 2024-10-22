@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <!-- Responsive Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-eN/g1emErjhbIEMCqKHbZtAGaRwGyVdc4uJxk4RNTGsuE7m5XmMqsz7wJ7NoZKnJ" crossorigin="anonymous">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="icon" href="/public/style/favicon.ico" type="image/x-icon">
+    <!-- Inline CSS for demonstration; move this to your style.css -->
+    <style>
+        /* Reset and basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        /* Header styles */
+        header {
+            background-color: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* Logo */
+        .navbar .logo a {
+            color: #000000;
+            font-size: 24px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        /* Navigation Menu */
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+        .nav-menu li {
+            list-style: none;
+            position: relative;
+        }
+        .nav-menu li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: background 0.3s, color 0.3s;
+        }
+        .nav-menu li a:hover {
+            background-color: #34495e;
+            color: #fff;
+        }
+        /* Dropdown Menu */
+        .nav-menu .dropdown {
+            cursor: pointer;
+        }
+        .nav-menu .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #34495e;
+            min-width: 160px;
+            top: 100%;
+            left: 0;
+        }
+        .nav-menu .dropdown-content a {
+            padding: 10px 15px;
+        }
+        .nav-menu .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger span {
+            height: 4px;
+            width: 25px;
+            background-color: #ecf0f1;
+            margin-bottom: 4px;
+            border-radius: 2px;
+        }
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: absolute;
+                top: 60px;
+                left: -100%;
+                flex-direction: column;
+                width: 100%;
+                background-color: #2c3e50;
+                transition: left 0.3s ease-in-out;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-menu li {
+                width: 100%;
+            }
+            .nav-menu .dropdown-content {
+                position: static;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="/move/about">MoveOut</a>
+            </div>
+            <!-- Navigation Menu -->
+            <ul class="nav-menu">
+                <li><a href="/move/about">About</a></li>
+                <% if (user) { %>
+                    <!-- If the user is logged in -->
+                    <li><a href="/move/profile">Profile</a></li>
+                    <li><a href="/move/boxes">My Boxes</a></li>
+                    <li><a href="/move/boxes/create">Add Box</a></li>
+                    <!-- Dropdown Menu -->
+                    <li class="dropdown">
+                        <a href="javascript:void(0)">More <i class="fas fa-caret-down"></i></a>
+                        <ul class="dropdown-content">
+                            <% if (user.isAdmin) { %>
+                                <li><a href="/move/admin/users">Admin Users</a></li>
+                                <li><a href="/move/admin/user">Admin</a></li>
+                            <% } %>
+                            <li><a href="/move/verify">Verify</a></li>
+                            <li><a href="/move/profile/reactivate">Reactivate</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/move/logout">Logout</a></li>
+                <% } else { %>
+                    <!-- If the user is not logged in -->
+                    <li><a href="/move/login">Login</a></li>
+                    <li><a href="/move/register">Register</a></li>
+                <% } %>
+            </ul>
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+    <!-- Rest of your page content -->
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

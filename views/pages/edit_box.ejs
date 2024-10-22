@@ -1,0 +1,29 @@
+<%- include("../partials/header") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Box</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Edit Box</h1>
+    <form action="/move/boxes/edit/<%= box.box_id %>" method="POST">
+        <label for="boxName">Box Name:</label>
+        <input type="text" id="boxName" name="boxName" value="<%= box.box_name %>" required>
+
+        <label for="labelDesign">Label Design:</label>
+        <select id="labelDesign" name="labelDesign">
+            <option value="Hazard" <%= box.label_design === 'Hazard' ? 'selected' : '' %>>Hazard</option>
+            <option value="Normal" <%= box.label_design === 'Normal' ? 'selected' : '' %>>Normal</option>
+            <option value="Fragile" <%= box.label_design === 'Fragile' ? 'selected' : '' %>>Fragile</option>
+        </select>
+
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>

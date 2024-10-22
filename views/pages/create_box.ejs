@@ -1,0 +1,127 @@
+<%- include("../partials/header") %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a New Box</title>
+    <link rel="stylesheet" href="/style/style.css"> <!-- External CSS -->
+    <script>
+        // Function to select a label image and mark it
+        function selectLabelImage(label) {
+            document.querySelectorAll('.label-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            label.classList.add('selected');
+
+            // Update hidden input field with selected label image value
+            document.getElementById('labelImageInput').value = label.dataset.value;
+        }
+
+        // Function to show the correct fields based on selected content type
+        function showContentInput() {
+            const contentType = document.getElementById('contentType').value;
+            document.getElementById('textInput').style.display = contentType === 'text' ? 'block' : 'none';
+            document.getElementById('fileInput').style.display = contentType === 'image' || contentType === 'audio' ? 'block' : 'none';
+        }
+
+        // Function to toggle PIN field visibility based on 'Private' checkbox
+        function togglePinField() {
+            const isPrivate = document.getElementById('isPrivate').checked;
+            const pinField = document.getElementById('pinField');
+            pinField.style.display = isPrivate ? 'block' : 'none';
+
+            // Automatically generate a 6-digit PIN if 'Private' is selected
+            if (isPrivate) {
+                document.getElementById('pinCode').value = Math.floor(100000 + Math.random() * 900000).toString();
+            } else {
+                document.getElementById('pinCode').value = '';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Create a New Box</h1>
+        <form action="/move/boxes/create" method="POST" enctype="multipart/form-data">
+            <!-- Box Name -->
+            <div class="form-group">
+                <label for="boxName">Box Name:</label>
+                <input type="text" name="boxName" id="boxName" placeholder="Enter box name" required>
+            </div>
+
+            <!-- Label Image Selection -->
+            <div class="form-group">
+                <label>Select Label Image:</label>
+                <div class="label-options">
+                    <div class="label-option" data-value="labe1.png" onclick="selectLabelImage(this)">
+                        <img src="/style/images/labe1.png" alt="Label Image 1">
+                    </div>
+                    <div class="label-option" data-value="labe2.png" onclick="selectLabelImage(this)">
+                        <img src="/style/images/labe2.png" alt="Label Image 2">
+                    </div>
+                    <div class="label-option" data-value="labe3.png" onclick="selectLabelImage(this)">
+                        <img src="/style/images/labe3.png" alt="Label Image 3">
+                    </div>
+                </div>
+                <input type="hidden" name="labelImage" id="labelImageInput" required>
+            </div>
+
+            <!-- Label Name Selection -->
+            <div class="form-group">
+                <label for="labelName">Label Name:</label>
+                <select name="labelName" id="labelName" required>
+                    <option value="" disabled selected>Select label name</option>
+                    <option value="normal">Normal</option>
+                    <option value="hazard">Hazard</option>
+                    <option value="fragile">Fragile</option>
+                </select>
+            </div>
+
+            <!-- Checkbox for Private Label -->
+            <div class="form-group">
+                <label for="isPrivate">Make this label private:</label>
+                <input type="checkbox" name="isPrivate" id="isPrivate" onchange="togglePinField()">
+            </div>
+
+            <!-- PIN Code Field (Shown only if Private is Selected) -->
+            <div id="pinField" class="form-group" style="display:none;">
+                <label for="pinCode">PIN Code:</label>
+                <input type="text" name="pinCode" id="pinCode" readonly>
+                <small>Note: This PIN is automatically generated for private labels.</small>
+            </div>
+
+            <!-- Content Type Selection -->
+            <div class="form-group">
+                <label for="contentType">Select Content Type:</label>
+                <select name="contentType" id="contentType" onchange="showContentInput()" required>
+                    <option value="" disabled selected>Select content type</option>
+                    <option value="text">Text</option>
+                    <option value="image">Image</option>
+                    <option value="audio">Audio</option>
+                </select>
+            </div>
+
+            <!-- Text Input (Shown when 'text' is selected) -->
+            <div id="textInput" class="form-group" style="display:none;">
+                <label for="contentText">Enter Text Content:</label>
+                <textarea name="contentText" id="contentText" rows="4" placeholder="Enter text content"></textarea>
+            </div>
+
+            <!-- File Upload (Shown when 'image' or 'audio' is selected) -->
+            <div id="fileInput" class="form-group" style="display:none;">
+                <label for="contentFile">Upload File:</label>
+                <input type="file" name="contentFile" id="contentFile" accept="image/*,audio/*">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Create Box</button>
+
+            <!-- Form Footer with Support -->
+            <div class="form-footer">
+                <p>Need help? <a href="/help">Contact support</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

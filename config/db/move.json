@@ -1,0 +1,9 @@
+{
+    "host": "localhost",
+    "user": "dbadm",
+    "password": "P@ssw0rd",
+    "database": "moveout",
+    "connectionLimit": 10,
+    "connectTimeout": 30000  
+}
+  
