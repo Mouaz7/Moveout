@@ -100,7 +100,7 @@ app.use((err, req, res, next) => {
 // Schedule deactivation of inactive accounts once a day
 cron.schedule('0 0 * * *', async () => {  // Runs every day at 00:00
   try {
-      console.log("Running automatic deactivation of inactive accounts...");
+      console.log("Running automatic deactivation of inactive accounts..kkk.");
       await cli.deactivateInactiveUsers();
       console.log("Automatic deactivation of inactive accounts completed.");
   } catch (error) {
